@@ -1,0 +1,11 @@
+C:\Users\alexdanyuk\source\repos\DAL_Project\DAL_Project\bin\Debug\netcoreapp2.1\DAL_Project.deps.json
+C:\Users\alexdanyuk\source\repos\DAL_Project\DAL_Project\bin\Debug\netcoreapp2.1\DAL_Project.runtimeconfig.json
+C:\Users\alexdanyuk\source\repos\DAL_Project\DAL_Project\bin\Debug\netcoreapp2.1\DAL_Project.runtimeconfig.dev.json
+C:\Users\alexdanyuk\source\repos\DAL_Project\DAL_Project\bin\Debug\netcoreapp2.1\DAL_Project.dll
+C:\Users\alexdanyuk\source\repos\DAL_Project\DAL_Project\obj\Debug\netcoreapp2.1\DAL_Project.csprojAssemblyReference.cache
+C:\Users\alexdanyuk\source\repos\DAL_Project\DAL_Project\obj\Debug\netcoreapp2.1\DAL_Project.csproj.CoreCompileInputs.cache
+C:\Users\alexdanyuk\source\repos\DAL_Project\DAL_Project\obj\Debug\netcoreapp2.1\DAL_Project.AssemblyInfoInputs.cache
+C:\Users\alexdanyuk\source\repos\DAL_Project\DAL_Project\obj\Debug\netcoreapp2.1\DAL_Project.AssemblyInfo.cs
+C:\Users\alexdanyuk\source\repos\DAL_Project\DAL_Project\bin\Debug\netcoreapp2.1\DAL_Project.pdb
+C:\Users\alexdanyuk\source\repos\DAL_Project\DAL_Project\obj\Debug\netcoreapp2.1\DAL_Project.dll
+C:\Users\alexdanyuk\source\repos\DAL_Project\DAL_Project\obj\Debug\netcoreapp2.1\DAL_Project.pdb
