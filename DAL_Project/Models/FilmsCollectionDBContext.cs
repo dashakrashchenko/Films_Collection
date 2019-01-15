@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-
+using System.Configuration;
 namespace DAL_Project.Models
 {
     public  class FilmsCollectionDBContext : DbContext
@@ -23,7 +23,8 @@ namespace DAL_Project.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=ALEXDANYUKF536;Database=FilmsCollectionDB;Trusted_Connection=True;");
+                string connectionString = ConfigurationManager.ConnectionStrings["connection_string"].ConnectionString;
+                optionsBuilder.UseSqlServer(connectionString);
             }
         }
 

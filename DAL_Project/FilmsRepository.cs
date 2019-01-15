@@ -44,7 +44,7 @@ namespace DAL_Project
 
         public IEnumerable<Films> GetBestFilmsByImdb()
         {
-            return FilmsCollectionDb.Films.OrderBy(s => s.ImdbScore);
+            return FilmsCollectionDb.Films.OrderByDescending(s => s.ImdbScore);
         }
 
         public IEnumerable<Films> GetAllFilmsByReleaseDate()
