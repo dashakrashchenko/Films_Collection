@@ -14,29 +14,40 @@ namespace DAL_Project
 
         public void AddToFavFilms(string filmname)
         {
-            int idfilm = FilmsCollectionDb.Films.Where(f => f.Filmname == filmname)
+            try
+            {
+                int idfilm = FilmsCollectionDb.Films.Where(f => f.Filmname == filmname)
                 .Select(f => f.IdFilm).First();
-
-            int? idmaker = FilmsCollectionDb.Films.Where(f => f.Filmname == filmname)
-                .Select(f => f.IdMaker).First();
-
-            FavouriteFilms temp = new FavouriteFilms();
-            temp.IdF = idfilm;
-            temp.IdM = idmaker;
-            FilmsCollectionDb.FavouriteFilms.Add(temp);
+                
+                FavouriteFilms favfilms = new FavouriteFilms();
+                favfilms.IdF = idfilm;
+                
+                FilmsCollectionDb.FavouriteFilms.Add(favfilms);
+            }
+            catch(Exception)
+            {            
+                throw new Exception("Film not found");
+            }
+          
+            
         }
 
         public void RemoveFromFavFilms(string filmname)
         {
-
-            int idfilm = FilmsCollectionDb.Films.Where(f => f.Filmname == filmname)
+            try
+            {
+                int idfilm = FilmsCollectionDb.Films.Where(f => f.Filmname == filmname)
                 .Select(f => f.IdFilm).First();
 
-            var film = from f in FilmsCollectionDb.FavouriteFilms
-                where f.IdF == idfilm
-                select f;
+                var filmv = FilmsCollectionDb.FavouriteFilms.Where(f => f.IdF == idfilm);
 
-            FilmsCollectionDb.FavouriteFilms.Remove(film.First());
+                FilmsCollectionDb.FavouriteFilms.Remove(filmv.First());
+            }
+            catch(Exception)
+            {
+                throw new Exception("Film not found");
+            }
+            
         }
 
 

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using System.Configuration;
 namespace DAL_Project.Models
 {
-    public  class FilmsCollectionDBContext : DbContext
+    public partial class FilmsCollectionDBContext : DbContext
     {
         public FilmsCollectionDBContext()
         {
@@ -43,17 +43,10 @@ namespace DAL_Project.Models
 
                 entity.Property(e => e.IdF).HasColumnName("ID_F");
 
-                entity.Property(e => e.IdM).HasColumnName("ID_M");
-
                 entity.HasOne(d => d.IdFNavigation)
                     .WithMany(p => p.FavouriteFilms)
                     .HasForeignKey(d => d.IdF)
                     .HasConstraintName("FK__FAVOURITE___ID_F__403A8C7D");
-
-                entity.HasOne(d => d.IdMNavigation)
-                    .WithMany(p => p.FavouriteFilms)
-                    .HasForeignKey(d => d.IdM)
-                    .HasConstraintName("FK__FAVOURITE___ID_M__412EB0B6");
             });
 
             modelBuilder.Entity<Filmmakers>(entity =>

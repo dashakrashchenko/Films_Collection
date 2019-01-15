@@ -7,7 +7,6 @@ namespace DAL_Project.Models
     {
         public Filmmakers()
         {
-            FavouriteFilms = new HashSet<FavouriteFilms>();
             Films = new HashSet<Films>();
         }
 
@@ -19,7 +18,6 @@ namespace DAL_Project.Models
         public string Awards { get; set; }
         public string Genre { get; set; }
 
-        public virtual ICollection<FavouriteFilms> FavouriteFilms { get; set; }
         public virtual ICollection<Films> Films { get; set; }
     }
 }
