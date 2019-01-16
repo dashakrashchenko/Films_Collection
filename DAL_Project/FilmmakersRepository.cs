@@ -15,14 +15,13 @@ namespace DAL_Project
         
         public Filmmakers GetInfoAboutFilmmaker(string fullname)
         {
-            string[] names = fullname.Split(' ');
-            string fname = names[0];
-            string sname = names[1];
+            fullname = fullname.Replace(" ", string.Empty);          
 
             int id = FilmsCollectionDb.Filmmakers
-                .Where(f => f.Lastname == sname && f.Firstname == fname)
-                .Select(s => s.IdFilmmaker)
-                .First();
+               .Where(f=>(f.Firstname+f.Lastname).Replace(" ", string.Empty)==fullname)
+               .Select(s => s.IdFilmmaker)
+               .First();
+
             return FilmsCollectionDb.Filmmakers.Find(id);
         }
 
