@@ -132,7 +132,13 @@ namespace DAL_Project
 
                                     case 5:
                                         {
-                                            var res = un.Films.GetAllFilmsByReleaseDate();
+                                            string pattern = "MM-dd-yyyy";
+                                            Console.WriteLine($"Date input pattern: {pattern}");
+                                            Console.WriteLine();
+                                            string release = Console.ReadLine();
+                                            DateTime parsedDate = DateTime.ParseExact(release, pattern, System.Globalization.CultureInfo.InvariantCulture);
+                                           
+                                            var res = un.Films.GetAllFilmsByReleaseDate(parsedDate.Date);
                                             Console.WriteLine("Film name\t Genre\tImdb score");
                                             foreach (var el in res)
                                             {

@@ -10,7 +10,7 @@ namespace DAL_Project
         IEnumerable<Films> GetAllFilmsByFilmmaker(string fullname);
         Films GetInfoAboutFilm(string filmname);
         IEnumerable<Films> GetAllFilmsByGenre(string genre);
-        IEnumerable<Films> GetAllFilmsByReleaseDate();
+        IEnumerable<Films> GetAllFilmsByReleaseDate(DateTime date);
         IEnumerable<Films> GetBestFilmsByImdb();
     }
 }

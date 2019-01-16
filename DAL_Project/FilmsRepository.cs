@@ -47,15 +47,9 @@ namespace DAL_Project
             return FilmsCollectionDb.Films.OrderByDescending(s => s.ImdbScore);
         }
 
-        public IEnumerable<Films> GetAllFilmsByReleaseDate()
+        public IEnumerable<Films> GetAllFilmsByReleaseDate(DateTime date)
         {
-            string pattern = "MM-dd-yyyy";
-            Console.WriteLine($"Date input pattern: {pattern}");
-            Console.WriteLine();
-            string release = Console.ReadLine();
-            DateTime parsedDate;
-            DateTime.TryParseExact(release, pattern, null, DateTimeStyles.None, out parsedDate);
-            return FilmsCollectionDb.Films.Where(s => s.Releasedate == parsedDate);
+            return FilmsCollectionDb.Films.Where(s => s.Releasedate.Value.Date == date);
         }
         public FilmsCollectionDBContext FilmsCollectionDb
         {
