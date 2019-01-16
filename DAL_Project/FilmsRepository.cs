@@ -13,20 +13,18 @@ namespace DAL_Project
             :base(cont)
         { }
 
-        public IEnumerable<Films> GetAllFilmsByFilmmaker(string fullname)
-        {
-            string[] names = fullname.Split(' ');
-            string fname = names[0];
-            string sname = names[1];
+        public IEnumerable<Films> GetAllFilmsByFilmmaker(string firstname, string lastname)
+        {        
 
             int id = FilmsCollectionDb.Filmmakers
-                .Where(f => f.Lastname == sname && f.Firstname == fname)
-                .Select(s => s.IdFilmmaker)
+                .Where(f => f.Lastname == lastname && f.Firstname == firstname)
+                .Select(s => s.FilmMakerId)
                 .First();
 
-            var result = from film in FilmsCollectionDb.Films
-                where film.IdMaker == id
-                select film;
+            //var result = from film in FilmsCollectionDb.Films
+            //    where film.MakerId == id
+            //    select film;
+            var result = FilmsCollectionDb.Films.Where(f => f.MakerId == id);
 
             return result;
         }

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using System.Configuration;
+
 namespace DAL_Project.Models
 {
     public partial class FilmsCollectionDBContext : DbContext
@@ -34,29 +35,33 @@ namespace DAL_Project.Models
 
             modelBuilder.Entity<FavouriteFilms>(entity =>
             {
-                entity.HasKey(e => e.FavId)
+                entity.HasKey(e => e.FavoriteFilmId)
                     .HasName("PK__FAVOURIT__6BE1F296BFB68CD4");
 
                 entity.ToTable("FAVOURITE_FILMS");
 
-                entity.Property(e => e.FavId).HasColumnName("FAV_ID");
+                entity.HasIndex(e => e.FilmId)
+                    .HasName("UQ__FAVOURIT__6D1D229D10686481")
+                    .IsUnique();
 
-                entity.Property(e => e.IdF).HasColumnName("ID_F");
+                entity.Property(e => e.FavoriteFilmId).HasColumnName("favoriteFilmID");
 
-                entity.HasOne(d => d.IdFNavigation)
-                    .WithMany(p => p.FavouriteFilms)
-                    .HasForeignKey(d => d.IdF)
+                entity.Property(e => e.FilmId).HasColumnName("FilmID");
+
+                entity.HasOne(d => d.Film)
+                    .WithOne(p => p.FavouriteFilms)
+                    .HasForeignKey<FavouriteFilms>(d => d.FilmId)
                     .HasConstraintName("FK__FAVOURITE___ID_F__403A8C7D");
             });
 
             modelBuilder.Entity<Filmmakers>(entity =>
             {
-                entity.HasKey(e => e.IdFilmmaker)
+                entity.HasKey(e => e.FilmMakerId)
                     .HasName("PK__FILMMAKE__2A12643A2CF1C729");
 
                 entity.ToTable("FILMMAKERS");
 
-                entity.Property(e => e.IdFilmmaker).HasColumnName("ID_FILMMAKER");
+                entity.Property(e => e.FilmMakerId).HasColumnName("FilmMakerID");
 
                 entity.Property(e => e.Awards)
                     .HasColumnName("AWARDS")
@@ -90,12 +95,12 @@ namespace DAL_Project.Models
 
             modelBuilder.Entity<Films>(entity =>
             {
-                entity.HasKey(e => e.IdFilm)
+                entity.HasKey(e => e.FilmId)
                     .HasName("PK__FILMS__62C9DB1C87A3CB23");
 
                 entity.ToTable("FILMS");
 
-                entity.Property(e => e.IdFilm).HasColumnName("ID_FILM");
+                entity.Property(e => e.FilmId).HasColumnName("FilmID");
 
                 entity.Property(e => e.Budget)
                     .HasColumnName("BUDGET")
@@ -111,17 +116,15 @@ namespace DAL_Project.Models
                     .HasMaxLength(30)
                     .IsUnicode(false);
 
-                entity.Property(e => e.IdMaker).HasColumnName("ID_MAKER");
-
-                entity.Property(e => e.ImdbScore).HasColumnName("IMDB_SCORE");
+                entity.Property(e => e.MakerId).HasColumnName("MakerID");
 
                 entity.Property(e => e.Releasedate)
                     .HasColumnName("RELEASEDATE")
                     .HasColumnType("date");
 
-                entity.HasOne(d => d.IdMakerNavigation)
+                entity.HasOne(d => d.Maker)
                     .WithMany(p => p.Films)
-                    .HasForeignKey(d => d.IdMaker)
+                    .HasForeignKey(d => d.MakerId)
                     .HasConstraintName("FK__FILMS__ID_MAKER__3E52440B");
             });
         }

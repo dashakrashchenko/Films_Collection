@@ -10,7 +10,7 @@ namespace DAL_Project.Models
             Films = new HashSet<Films>();
         }
 
-        public int IdFilmmaker { get; set; }
+        public int FilmMakerId { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public DateTime? Dateofbirth { get; set; }

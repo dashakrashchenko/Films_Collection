@@ -19,7 +19,7 @@ namespace DAL_Project
 
             int id = FilmsCollectionDb.Filmmakers
                .Where(f=>(f.Firstname+f.Lastname).Replace(" ", string.Empty)==fullname)
-               .Select(s => s.IdFilmmaker)
+               .Select(s => s.FilmMakerId)
                .First();
 
             return FilmsCollectionDb.Filmmakers.Find(id);

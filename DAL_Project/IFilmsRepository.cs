@@ -7,7 +7,7 @@ namespace DAL_Project
 {
     interface IFilmsRepository: IRepository<Films>
     {
-        IEnumerable<Films> GetAllFilmsByFilmmaker(string fullname);
+        IEnumerable<Films> GetAllFilmsByFilmmaker(string firstname, string lastname);
         Films GetInfoAboutFilm(string filmname);
         IEnumerable<Films> GetAllFilmsByGenre(string genre);
         IEnumerable<Films> GetAllFilmsByReleaseDate(DateTime date);

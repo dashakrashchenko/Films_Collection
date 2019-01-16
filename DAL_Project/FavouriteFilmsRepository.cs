@@ -17,11 +17,10 @@ namespace DAL_Project
         public void AddToFavFilms(string filmname)
         {
             try
-            {   
-                var newfilm = FilmsCollectionDb.Films.Where(t => t.Filmname == filmname).Include(t => t.FavouriteFilms).FirstOrDefault();
-
+            {
+                var newfilm = FilmsCollectionDb.Films.Where(t => t.Filmname == filmname).FirstOrDefault();
                 FavouriteFilms favfilms = new FavouriteFilms();
-                favfilms.IdF = newfilm.IdFilm;
+                favfilms.Film = newfilm;
 
                 FilmsCollectionDb.FavouriteFilms.Add(favfilms);
             }
@@ -37,14 +36,14 @@ namespace DAL_Project
         {
             try
             {
-                var oldfilm = FilmsCollectionDb.Films.Where(t => t.Filmname == filmname).Include(t => t.FavouriteFilms).FirstOrDefault();
-                FilmsCollectionDb.FavouriteFilms.Remove(FilmsCollectionDb.FavouriteFilms.Where(f=>f.IdF==oldfilm.IdFilm).FirstOrDefault());
+                var olditem = FilmsCollectionDb.Films.Where(t => t.Filmname == filmname).FirstOrDefault();
+                var a = FilmsCollectionDb.FavouriteFilms.Where(t => t.Film == olditem).FirstOrDefault();
+                FilmsCollectionDb.FavouriteFilms.Remove(a);
             }
             catch(Exception)
             {
                 throw new Exception("Film not found");
             }
-            
         }
 
         private FilmsCollectionDBContext FilmsCollectionDb

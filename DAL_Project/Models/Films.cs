@@ -5,20 +5,15 @@ namespace DAL_Project.Models
 {
     public partial class Films
     {
-        public Films()
-        {
-            FavouriteFilms = new HashSet<FavouriteFilms>();
-        }
-
-        public int IdFilm { get; set; }
+        public int FilmId { get; set; }
         public string Filmname { get; set; }
         public string Genre { get; set; }
         public DateTime? Releasedate { get; set; }
         public decimal? Budget { get; set; }
-        public int? IdMaker { get; set; }
+        public int? MakerId { get; set; }
         public double? ImdbScore { get; set; }
 
-        public virtual Filmmakers IdMakerNavigation { get; set; }
-        public virtual ICollection<FavouriteFilms> FavouriteFilms { get; set; }
+        public virtual Filmmakers Maker { get; set; }
+        public virtual FavouriteFilms FavouriteFilms { get; set; }
     }
 }

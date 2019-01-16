@@ -5,9 +5,9 @@ namespace DAL_Project.Models
 {
     public partial class FavouriteFilms
     {
-        public int? IdF { get; set; }
-        public int FavId { get; set; }
+        public int? FilmId { get; set; }
+        public int FavoriteFilmId { get; set; }
 
-        public virtual Films IdFNavigation { get; set; }
+        public virtual Films Film { get; set; }
     }
 }

@@ -85,8 +85,11 @@ namespace DAL_Project
                                     case 1:
                                         {
                                             Console.WriteLine("Enter his/her full name");
-                                            string fullname = Console.ReadLine();
-                                            var res = un.Films.GetAllFilmsByFilmmaker(fullname);
+                                            Console.WriteLine("First name: ");
+                                            string firstname = Console.ReadLine();
+                                            Console.WriteLine("Last name: ");
+                                            string lastname = Console.ReadLine();
+                                            var res = un.Films.GetAllFilmsByFilmmaker(firstname,lastname);
                                             Console.WriteLine("Film name\t Genre\tImdb score");
                                             foreach (var el in res)
                                             {
@@ -120,7 +123,7 @@ namespace DAL_Project
 
                                     case 4:
                                         {
-                                            var res = un.Films.GetBestFilmsByImdb();
+                                            var res = un.Films.GetSortedByImdb();
                                             Console.WriteLine("Film name\t Genre\tImdb score");
                                             foreach (var el in res)
                                             {
