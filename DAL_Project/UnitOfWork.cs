@@ -14,11 +14,11 @@ namespace DAL_Project
             _context = context;
             Filmmakers = new FilmmakersRepository(_context);
             Films = new FilmsRepository(_context);
-            FavouriteFilms = new FavouriteFilmsRepository(_context);
+            FavouriteFilm = new FavouriteFilmRepository(_context);
         }
         public IFilmmakersRepository Filmmakers { get; private set; }
         public IFilmsRepository Films { get; private set; }
-        public  IFavouriteFilmsRepository FavouriteFilms { get; private set; }
+        public  IFavouriteFilmRepository FavouriteFilm { get; private set; }
 
         public int Complete()
         {

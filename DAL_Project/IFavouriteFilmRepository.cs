@@ -5,7 +5,7 @@ using DAL_Project.Models;
 
 namespace DAL_Project
 {
-    interface IFavouriteFilmsRepository:IRepository<FavouriteFilms>
+    interface IFavouriteFilmRepository:IRepository<FavouriteFilm>
     {
         void AddToFavFilms(string filmname);
         void RemoveFromFavFilms(string filmname);

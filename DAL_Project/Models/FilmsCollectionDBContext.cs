@@ -16,7 +16,7 @@ namespace DAL_Project.Models
         {
         }
 
-        public virtual DbSet<FavouriteFilms> FavouriteFilms { get; set; }
+        public virtual DbSet<FavouriteFilm> FavouriteFilm { get; set; }
         public virtual DbSet<Filmmakers> Filmmakers { get; set; }
         public virtual DbSet<Films> Films { get; set; }
 
@@ -33,12 +33,12 @@ namespace DAL_Project.Models
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.0-rtm-35687");
 
-            modelBuilder.Entity<FavouriteFilms>(entity =>
+            modelBuilder.Entity<FavouriteFilm>(entity =>
             {
                 entity.HasKey(e => e.FavoriteFilmId)
                     .HasName("PK__FAVOURIT__6BE1F296BFB68CD4");
 
-                entity.ToTable("FAVOURITE_FILMS");
+                entity.ToTable("FAVOURITE_FILM");
 
                 entity.HasIndex(e => e.FilmId)
                     .HasName("UQ__FAVOURIT__6D1D229D10686481")
@@ -49,8 +49,8 @@ namespace DAL_Project.Models
                 entity.Property(e => e.FilmId).HasColumnName("FilmID");
 
                 entity.HasOne(d => d.Film)
-                    .WithOne(p => p.FavouriteFilms)
-                    .HasForeignKey<FavouriteFilms>(d => d.FilmId)
+                    .WithOne(p => p.FavouriteFilm)
+                    .HasForeignKey<FavouriteFilm>(d => d.FilmId)
                     .HasConstraintName("FK__FAVOURITE___ID_F__403A8C7D");
             });
 

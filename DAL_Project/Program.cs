@@ -170,7 +170,7 @@ namespace DAL_Project
                                         {
                                             Console.WriteLine("Enter film name: ");
                                             string filmname = Console.ReadLine();
-                                            un.FavouriteFilms.AddToFavFilms(filmname);
+                                            un.FavouriteFilm.AddToFavFilms(filmname);
                                             Console.WriteLine("New film added successfully");
                                             break;
 
@@ -180,7 +180,7 @@ namespace DAL_Project
                                         {
                                             Console.WriteLine("Enter film name: ");
                                             string filmname = Console.ReadLine();
-                                            un.FavouriteFilms.RemoveFromFavFilms(filmname);
+                                            un.FavouriteFilm.RemoveFromFavFilms(filmname);
                                             Console.WriteLine("Film removed successfully");
                                             break;
                                         }

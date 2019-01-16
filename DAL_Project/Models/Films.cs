@@ -14,6 +14,6 @@ namespace DAL_Project.Models
         public double? ImdbScore { get; set; }
 
         public virtual Filmmakers Maker { get; set; }
-        public virtual FavouriteFilms FavouriteFilms { get; set; }
+        public virtual FavouriteFilm FavouriteFilm { get; set; }
     }
 }

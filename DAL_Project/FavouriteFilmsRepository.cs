@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL_Project
 {
-    class FavouriteFilmsRepository:Repository<FavouriteFilms>,IFavouriteFilmsRepository
+    class FavouriteFilmRepository:Repository<FavouriteFilm>,IFavouriteFilmRepository
     {
-        public FavouriteFilmsRepository(FilmsCollectionDBContext cont)
+        public FavouriteFilmRepository(FilmsCollectionDBContext cont)
            :base(cont)
         { }
 
@@ -19,10 +19,10 @@ namespace DAL_Project
             try
             {
                 var newfilm = FilmsCollectionDb.Films.Where(t => t.Filmname == filmname).FirstOrDefault();
-                FavouriteFilms favfilms = new FavouriteFilms();
+                FavouriteFilm favfilms = new FavouriteFilm();
                 favfilms.Film = newfilm;
 
-                FilmsCollectionDb.FavouriteFilms.Add(favfilms);
+                FilmsCollectionDb.FavouriteFilm.Add(favfilms);
             }
             catch(Exception)
             {
@@ -37,8 +37,8 @@ namespace DAL_Project
             try
             {
                 var olditem = FilmsCollectionDb.Films.Where(t => t.Filmname == filmname).FirstOrDefault();
-                var a = FilmsCollectionDb.FavouriteFilms.Where(t => t.Film == olditem).FirstOrDefault();
-                FilmsCollectionDb.FavouriteFilms.Remove(a);
+                var a = FilmsCollectionDb.FavouriteFilm.Where(t => t.Film == olditem).FirstOrDefault();
+                FilmsCollectionDb.FavouriteFilm.Remove(a);
             }
             catch(Exception)
             {
