@@ -11,6 +11,6 @@ namespace DAL_Project
         Films GetInfoAboutFilm(string filmname);
         IEnumerable<Films> GetAllFilmsByGenre(string genre);
         IEnumerable<Films> GetAllFilmsByReleaseDate(DateTime date);
-        IEnumerable<Films> GetBestFilmsByImdb();
+        IEnumerable<Films> GetSortedByImdb();
     }
 }

@@ -42,7 +42,7 @@ namespace DAL_Project
             return FilmsCollectionDb.Films.Where(s => s.Genre == genre);
         }
 
-        public IEnumerable<Films> GetBestFilmsByImdb()
+        public IEnumerable<Films> GetSortedByImdb()
         {
             return FilmsCollectionDb.Films.OrderByDescending(s => s.ImdbScore);
         }

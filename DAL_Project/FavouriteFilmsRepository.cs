@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using DAL_Project.Models;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace DAL_Project
 {
@@ -15,17 +17,16 @@ namespace DAL_Project
         public void AddToFavFilms(string filmname)
         {
             try
-            {
-                int idfilm = FilmsCollectionDb.Films.Where(f => f.Filmname == filmname)
-                .Select(f => f.IdFilm).First();
-                
+            {   
+                var newfilm = FilmsCollectionDb.Films.Where(t => t.Filmname == filmname).Include(t => t.FavouriteFilms).FirstOrDefault();
+
                 FavouriteFilms favfilms = new FavouriteFilms();
-                favfilms.IdF = idfilm;
-                
+                favfilms.IdF = newfilm.IdFilm;
+
                 FilmsCollectionDb.FavouriteFilms.Add(favfilms);
             }
             catch(Exception)
-            {            
+            {
                 throw new Exception("Film not found");
             }
           
@@ -36,12 +37,8 @@ namespace DAL_Project
         {
             try
             {
-                int idfilm = FilmsCollectionDb.Films.Where(f => f.Filmname == filmname)
-                .Select(f => f.IdFilm).First();
-
-                var filmv = FilmsCollectionDb.FavouriteFilms.Where(f => f.IdF == idfilm);
-
-                FilmsCollectionDb.FavouriteFilms.Remove(filmv.First());
+                var oldfilm = FilmsCollectionDb.Films.Where(t => t.Filmname == filmname).Include(t => t.FavouriteFilms).FirstOrDefault();
+                FilmsCollectionDb.FavouriteFilms.Remove(FilmsCollectionDb.FavouriteFilms.Where(f=>f.IdF==oldfilm.IdFilm).FirstOrDefault());
             }
             catch(Exception)
             {
@@ -49,10 +46,6 @@ namespace DAL_Project
             }
             
         }
-
-
-
-
 
         private FilmsCollectionDBContext FilmsCollectionDb
         {
